@@ -15,10 +15,7 @@ const App = () => {
 
   //los hooks se colocan en la parte superior siempre
    const [modalVisible, setModalVisible] = useState(false)
-
-  const nuevaCita = () => {
-    console.log('Diste click...')
-  }
+   const [pacientes, setPacientes] = useState([])
 
   return (
     <SafeAreaView style={styles.container}>
@@ -28,12 +25,15 @@ const App = () => {
 
         <Pressable
           style={styles.btnNuevaCita}
-          onPress={() => setModalVisible(true)}
+          onPress={() => setModalVisible(!modalVisible)}
         >
           <Text style={styles.btnTextoNuevaCita}>Nueva Cita</Text>
         </Pressable>
         <Formulario 
          modalVisible={modalVisible}
+         setModalVisible={setModalVisible}
+         pacientes={pacientes}
+         setPacientes={setPacientes}
         />
     </SafeAreaView>
   );
