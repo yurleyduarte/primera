@@ -31,6 +31,7 @@ const Formulario = ({modalVisible, setModalVisible, pacientes, setPacientes}) =>
     }
     
     const nuevoPaciente = {
+       id: Date.now(),
         paciente,
         propietario,
         email,
@@ -38,6 +39,13 @@ const Formulario = ({modalVisible, setModalVisible, pacientes, setPacientes}) =>
         sintomas
     }
     setPacientes([...pacientes, nuevoPaciente])
+    setModalVisible(!modalVisible)
+
+    setPaciente('')
+    setPropietario('')
+    setEmail('')
+    setTelefono('')
+    setSintomas('')
   }
 
   return (

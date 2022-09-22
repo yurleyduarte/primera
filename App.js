@@ -1,40 +1,61 @@
 
 import React, { useState } from 'react';
-import { 
-  SafeAreaView, 
-  View, 
-  Text, 
+import {
+  SafeAreaView,
+  View,
+  Text,
   StyleSheet,
-  Pressable, 
-  Modal
+  Pressable,
+  FlatList
 } from 'react-native';
 
 import Formulario from './src/components/Formulario';
+import Paciente from './src/components/Paciente';
+import Formulario from './src/components/Paciente';
 
 const App = () => {
 
   //los hooks se colocan en la parte superior siempre
-   const [modalVisible, setModalVisible] = useState(false)
-   const [pacientes, setPacientes] = useState([])
+  const [modalVisible, setModalVisible] = useState(false)
+  const [pacientes, setPacientes] = useState([])
 
   return (
     <SafeAreaView style={styles.container}>
-        <Text style={styles.titulo}>Administrador de citas {''}
-          <Text style={styles.tituloBold}>Veterinaria</Text>
-        </Text>
+      <Text style={styles.titulo}>Administrador de citas {''}
+        <Text style={styles.tituloBold}>Veterinaria</Text>
+      </Text>
 
-        <Pressable
-          style={styles.btnNuevaCita}
-          onPress={() => setModalVisible(!modalVisible)}
-        >
-          <Text style={styles.btnTextoNuevaCita}>Nueva Cita</Text>
-        </Pressable>
-        <Formulario 
-         modalVisible={modalVisible}
-         setModalVisible={setModalVisible}
-         pacientes={pacientes}
-         setPacientes={setPacientes}
-        />
+      <Pressable
+        style={styles.btnNuevaCita}
+        onPress={() => setModalVisible(!modalVisible)}
+      >
+        <Text style={styles.btnTextoNuevaCita}>Nueva Cita</Text>
+      </Pressable>
+
+      {pacientes.length === 0 ? 
+      <Text style={styles.noPacientes}>No hay pacientes aun </Text> : 
+      <FlatList
+      style={styles.listado}
+        date={pacientes}
+        keyExtractor={(item) => item.id }
+        renderItem={({item}) => {
+
+          return(
+            <Paciente 
+              item={item}            
+            />
+          )
+        }}
+      />
+      
+      }
+
+      <Formulario
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        pacientes={pacientes}
+        setPacientes={setPacientes}
+      />
     </SafeAreaView>
   );
 };
@@ -54,19 +75,29 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     color: '#6D28D9',
   },
-  btnNuevaCita:{
+  btnNuevaCita: {
     backgroundColor: '#6D28D9',
     padding: 15,
     marginTop: 30,
     marginHorizontal: 20,
     borderRadius: 10
   },
-  btnTextoNuevaCita:{
+  btnTextoNuevaCita: {
     textAlign: 'center',
     color: '#FFF',
     fontSize: 20,
     fontWeight: '900',
     textTransform: 'uppercase'
+  },
+  noPacientes: {
+    marginTop: 40,
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: '600'
+  },
+  listado: {
+    marginTop: 50,
+    marginHorizontal: 30
   }
 });
 
