@@ -8,11 +8,16 @@ const Paciente = ({ item }) => {
 
     return (
        <View>
-
            <Text>{paciente}</Text>
            <Text>{sintomas}</Text>
        </View>
     )
 }
+
+const styles = StyleSheet.create({
+
+
+    
+})
 
 export default Paciente

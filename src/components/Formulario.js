@@ -31,7 +31,7 @@ const Formulario = ({modalVisible, setModalVisible, pacientes, setPacientes}) =>
     }
     
     const nuevoPaciente = {
-       id: Date.now(),
+        id: Date.now(),
         paciente,
         propietario,
         email,
@@ -106,12 +106,6 @@ const Formulario = ({modalVisible, setModalVisible, pacientes, setPacientes}) =>
               maxLength={10}
             />
           </View>
-          {/* <View style={styles.campo}>
-            <Text style={styles.label}>Fecha Alta</Text>
-            <view style={styles.fechaContenedor}>
-              <DatePicker date={fecha} locale="es" />
-            </view>
-          </View> */}
           <View style={styles.campo}>
             <Text style={styles.label}>Sintomas</Text>
             <TextInput
