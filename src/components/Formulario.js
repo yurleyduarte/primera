@@ -17,7 +17,6 @@ const Formulario = ({modalVisible, setModalVisible, pacientes, setPacientes}) =>
   const [propietario, setPropietario] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
-  //   const [fecha, setFecha] = useState(new Date());
   const [sintomas, setSintomas] = useState('');
 
   const handleCita = () =>{

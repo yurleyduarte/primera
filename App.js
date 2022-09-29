@@ -35,7 +35,7 @@ const App = () => {
           date={pacientes}
           keyExtractor={item => item.id}
           renderItem={({item}) => {
-            return <Paciente item={item} />;
+            return <Paciente item={item} />
           }}
         />
       }
